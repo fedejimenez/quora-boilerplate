@@ -27,17 +27,27 @@ put '/users/:id' do
 	end
 end
 
-# post '/users/save_image' do
-# 	@user = current_user
-# 	@user.update(params[:img])
-# 	if @user.valid?
-# 		@message = "Profile Image Updated"
-# 		@questions = current_user.questions
-# 		@answers = current_user.answers
-# 		erb :'/users/show'
-# 	else
-# 		@message = "Invalid file, Profile not being updated"
-# 		erb :'/users/edit'
-# 	end
-# end
+post '/users/:id/save_image' do
+  
+	@filename = params[:file][:filename]
+	file = params[:file][:tempfile]
+
+	File.open("./public/img/#{@filename}", 'wb') do |f|
+	f.write(file.read)
+	end
+
+	@user = current_user
+	@user.update(img: @filename)
+	if @user.valid?
+		@message = "Image Uploaded"
+		@questions = current_user.questions
+		@answers = current_user.answers
+		erb :'/users/show'
+	else
+		@message = "There was an error, the image has not beeng updated"
+		erb :'/users/edit'
+	end
+
+	# erb :'/users/show'
+end
 

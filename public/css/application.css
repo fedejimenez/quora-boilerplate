@@ -90,7 +90,38 @@ nav
   width: 50px;
 }
 
-/*======================================*/
+.navbar-nav>li>a.profile-image {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+
+/*==============================================================*/
+/*=======           IMAGES                                ======*/
+/*==============================================================*/
+
+.special-img {
+    width: 2em;
+    height: 2em;
+    /*object-fit: contain;*/
+    position: relative;
+    float: left;
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
+}
+
+.caret{
+}
+
+p{
+  font-size: 20px;
+  padding-right: 10px;
+  text-align: right;
+}
+/*==============================================================*/
+/*=======            SEARCH QUESTION BAR                  ======*/
+/*==============================================================*/
+
 /*input[type=text] {*/
 #searchbox {
     /*width: 40%;*/

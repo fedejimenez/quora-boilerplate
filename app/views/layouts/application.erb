@@ -3,7 +3,7 @@
 
 <head>
 	<link rel="stylesheet" href="/css/application.css">
- 	<link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/4.1.1/normalize.css">
+<!--  	<link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/4.1.1/normalize.css"> -->
 	<title>Quora - Clone</title>
 	<link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
 	<!-- <script src="js/jquery.js"></script> -->
@@ -28,7 +28,7 @@
 		<div class="container-fluid">
 	    <div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
+				<span class="mr-auto"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -47,33 +47,49 @@
 	    	<div class="col-md-2"></div>
 	    	<form action="/question" method="post" class="navbar-form navbar-left">
 				<input type="text" name="question[question]" placeholder="Search Quora" id="searchbox" class="form-control col-md-8">
-				<input type="submit" value="Ask Question" class="btn btn-danger"">
+				<input type="submit" value="Add Question" class="btn btn-danger"">
 			</form>
-			<div class="col-md-2"></div>
-			<ul class="nav navbar-nav navbar-right">
-	        	<li class="dropdown">
-	        	<% if logged_in? %>
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %><span class="caret"></span></a>
-		        	<ul class="dropdown-menu">
-		          		<li>
-		          			<a href="/users/<%=current_user.id%>">Profile</a>
-		          		</li>
-						<li role="separator" class="divider"></li>
-		          		<li>
-		          			<a href="/users/<%=current_user.id%>">Settings</a>
-		          		</li>
-						<li role="separator" class="divider"></li>
-						<li><a href="/logout">Logout</a></li>
-					</ul>
-	            <% else %>
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guest<span class="caret"></span></a>
-			        <ul class="dropdown-menu">
-			          <li><a href="/login">Login</a></li>
-			          <li><a href="/signup">Sign Up</a></li>
-					</ul>
-			    <% end %>
-	        	</li>
-	      	</ul>
+			<div class="col-md-2 nav navbar-nav navbar-right">
+
+				<ul class="nav navbar-nav navbar-right">
+
+		        	<li class="dropdown">
+		        	<% if logged_in? %>
+						<a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
+					        <img class="img-circle special-img" src="/img/<%= current_user.img%>" alt="">
+							<p> <%= current_user.name %></p>
+							<!-- <b class="caret"> </b> -->
+						</a>
+			        	<ul class="dropdown-menu">
+			          		<li>
+			          			<a href="/users/<%=current_user.id%>">Profile</a>
+			          		</li>
+							<li role="separator" class="divider"></li>
+			          		<li>
+			          			<a href="/users/<%=current_user.id%>">Settings</a>
+			          		</li>
+							<li role="separator" class="divider"></li>
+							<li><a href="/logout">Logout</a></li>
+						</ul>
+		            <% else %>
+<!-- 			          <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown"><p>Guest </p>
+			          	<img class="img-circle special-img" src="/img/user_general.png" alt=""> -->
+			          	<!-- <b class="caret"></b> -->
+			          </a>
+			          	<a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
+					        <img class="img-circle special-img" src="/img/user_general.png" alt="">
+							<p> Login / Signup</p>
+							<!-- <b class="caret"> </b> -->
+						</a>
+				        <ul class="dropdown-menu">
+				          <li><a href="/login">Login</a></li>
+						  <li role="separator" class="divider"></li>
+				          <li><a href="/signup">Sign Up</a></li>
+						</ul>
+				    <% end %>
+		        	</li>
+		      	</ul>
+	      	</div>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
