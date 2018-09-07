@@ -26,3 +26,18 @@ put '/users/:id' do
 		erb :'/users/edit'
 	end
 end
+
+# post '/users/save_image' do
+# 	@user = current_user
+# 	@user.update(params[:img])
+# 	if @user.valid?
+# 		@message = "Profile Image Updated"
+# 		@questions = current_user.questions
+# 		@answers = current_user.answers
+# 		erb :'/users/show'
+# 	else
+# 		@message = "Invalid file, Profile not being updated"
+# 		erb :'/users/edit'
+# 	end
+# end
+
