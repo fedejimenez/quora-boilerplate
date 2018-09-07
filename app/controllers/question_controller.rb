@@ -1,10 +1,16 @@
 require 'byebug'
+require_relative '../models/question_vote.rb'
+require_relative '../models/question.rb'
+require_relative '../models/question_tag.rb'
+
+
 post '/question' do
 	if logged_in?
 		question = Question.ask_question(session[:id], params["question"]["question"])
 		redirect to '/question/' + question.id.to_s
 	else
 		@message = "Please log in first"
+		@aux = "login"
 		erb :'sessions/new'
 	end
 end
@@ -13,6 +19,8 @@ get '/' do
 	# most upvoted questions
 	trending = {}
 	@trending = []
+	upvoted = []
+	question_ids = []
 	upvoted = QuestionVote.where(vote: 1) # extract all the upvoted questions
 	question_ids = upvoted.distinct.pluck(:question_id) # extract distinct question ids from the upvoted pool
 	question_ids.each do |id| 
@@ -30,7 +38,8 @@ get '/' do
 	# new users
 	@users = User.order(created_at: :desc).limit(5)
 
-	erb :"static/index"
+	erb :"static/static"
+	# erb :'sessions/new'
 end
 
 get '/question/:id' do # individual question page

@@ -33,10 +33,12 @@ APP_NAME = APP_ROOT.basename.to_s
 
 # Setup sessions, logging and dump_errors
 use Rack::Session::Cookie, expire_after: ENV['SESSION_EXPIRE'] || 2592000, # seconds
-                           secret: ENV['SESSION_SECRET'] || 'this is a secret shhhhh',
+                           secret: ENV['SESSION_SECRET'] || 'this is a secret',
                            logging: true,
                            dump_errors: false,
                            app_file: __FILE__
+
+# enable :sessions  # <--- enable sessions
 
 # Setup assets folder
 set :public_folder, 'public'
@@ -47,7 +49,7 @@ require APP_ROOT.join('config', 'database')
 # Setup views (V)
 set :views, File.join(APP_ROOT, "app", "views")
 set :erb, layout: :'layouts/application'
-
+# 
 # Setup helper (H)
 Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 

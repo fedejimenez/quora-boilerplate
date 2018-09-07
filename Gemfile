@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 
 gem 'byebug'
 
-# Ruby Version
-# ruby "2.2.1"
-
 # Adding Sinatra Drivers
 gem 'sinatra'
 gem 'sinatra-contrib'
@@ -33,7 +30,8 @@ gem 'bcrypt'
 # Add pagination
 gem 'will_paginate'
 
-group :development, :test do
+# group :development, :test do
+group :development do
 	# Adding shotgun for local web hosting
 	gem 'shotgun'
 end

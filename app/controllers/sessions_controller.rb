@@ -21,11 +21,18 @@ post '/signup' do
 		redirect '/'
 	else
 		@message = user.errors.full_messages
+		@aux = "signup"
 		erb :"sessions/new"
 	end
 end
 
 get '/login' do
+	@aux = "login"
+	erb :"sessions/new"
+end
+
+get '/signup' do
+	@aux = "signup"
 	erb :"sessions/new"
 end
 

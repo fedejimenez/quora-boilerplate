@@ -1,3 +1,7 @@
+require_relative '../models/user.rb'
+require_relative '../models/answer.rb'
+require_relative '../models/answer_vote.rb'
+
 get '/users/:id' do
 	@user = User.find(params[:id])
 	@questions = @user.questions

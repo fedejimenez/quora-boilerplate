@@ -1,3 +1,9 @@
+require_relative '../models/question_vote.rb'
+require_relative '../models/question.rb'
+require_relative '../models/question_tag.rb'
+require_relative '../models/tag.rb'
+require_relative '../models/user.rb'
+
 post '/questions/:id/tags' do 
 	question = Question.find_by(id: params[:id])
 	tag = params[:tag][:content].split(",")

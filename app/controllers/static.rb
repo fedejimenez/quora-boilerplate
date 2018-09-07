@@ -1,3 +1,6 @@
 get '/' do
-  erb :"static/index"
+  # erb :"static/static"
+  # erb :"sessions/new"
+  # erb :"layouts/layout"
+
 end
