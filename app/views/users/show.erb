@@ -1,11 +1,7 @@
 <div class="row">
   <div class="col-md-4">
         <!-- <div class="col-md-3"> -->
-          <% if current_user.img? %>
-            <img class="thumbnail img-circle" src="/img/<%= current_user.img%>" alt="" width="60%">
-          <% else %>
-            <img class="thumbnail img-circle" src="/img/user_general.png" alt="" width="60%">
-          <% end %>
+            <img class="thumbnail img-circle" src="/img/<%= @user.img%>" alt="" width="60%">
         <!-- </div> -->
 
     <hr>

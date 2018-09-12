@@ -1,6 +1,8 @@
 <div class="row">
 	<div class="col-md-3"><h4 class="text-muted">Most Upvoted Questions</h4>
+
 	<hr>
+
 	<div class="list-group">
 		<% if @trending %>
 			<% @trending.each do |id| %>
@@ -18,17 +20,30 @@
 			<% if @questions %>
 			<% @questions.each do |q| %>
 				<h4 class="list-group-item-heading"><a href="/question/<%= q.id %>"><%= q.question %></a></h4>
-				<a href="/users/<%=q.user_id%>"><%= q.user.name %></a>
-				<p class="list-group-item-text"><%= q.answers.last.answer if q.answers.last %></p>
+				<a href="/users/<%=q.user_id%>"><img class="img-circle special-img" src="/img/<%= q.user.img%>" alt="">
+					<h5 class=""> <%= q.user.name %> </h5>
+				</a>
+				<h6 class="list-group-item-text"><%= q.answers.last.answer if q.answers.last %></h6>
 				<div class="row">
-					<form class="col-md-2" action="/question/<%=q.id%>/upvote" method="post">
-						<input class="btn btn-xs btn-info" type="submit" value="Upvote | <%= q.count_upvotes %>">
-					</form>
-					<form class="col-md-2" action="/question/<%=q.id%>/downvote" method="post">
-						<input class="btn btn-xs btn-secondary"type="submit" value="Downvote | <%= q.count_downvotes %>">
-					</form>
-					<div class="col-md-8"></div>
+<!-- 					<form class="col-md-2" action="/question/<%=q.id%>/upvote" method="post"> -->								
+
+					<button class="btn btn-xs btn-info " id="upvote" onclick="upvote('<%= q.id %>');">
+						<i class="fa fa-thumbs-up"></i>
+						<span id="upvote-count"> | <%= q.count_upvotes %> </span>
+					</button>
+
+<!-- 
+					<form class="col-md-2" action="/question/<%=q.id%>/downvote" method="post"> -->
+
+					<button class="btn btn-xs btn-secondary" id="downvote" onclick="downvote('<%= q.id %>');">
+						<i class="fa fa-thumbs-down"></i> 
+						<span id="downvote-count"> | <%= q.count_downvotes %> </span>
+					</button>
+
+					<!-- </form> -->
+					<div class="col-md-8"><p></p></div>
 				</div>
+				<div class="col-md-8"><p id="message-vote"></p></div>
 				<hr>
 			<% end %>
 		<% end %>

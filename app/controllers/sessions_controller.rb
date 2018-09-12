@@ -18,6 +18,13 @@ post '/signup' do
 	if user.valid?
 		user.save
 		session[:id] = user.id
+		# Add image general
+		File.open("./public/img/user_general.png", 'wb') do |f|
+			f.write(file.read)
+		end
+		@user = current_user
+		@user.update(img: 'user_general.png')
+		
 		redirect '/'
 	else
 		@message = user.errors.full_messages

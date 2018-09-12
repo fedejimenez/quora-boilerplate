@@ -25,6 +25,8 @@ get '/' do
 	question_ids = upvoted.distinct.pluck(:question_id) # extract distinct question ids from the upvoted pool
 	question_ids.each do |id| 
 	# storing question id and upvote counts in a hash
+	puts question_ids
+	puts trending
 		trending[id.to_i] = upvoted.where(question_id: id.to_i).count
 	end
 	# sorting hash by value

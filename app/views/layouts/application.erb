@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
 	<link rel="stylesheet" href="/css/application.css">
 <!--  	<link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/4.1.1/normalize.css"> -->
 	<title>Quora - Clone</title>
@@ -12,14 +18,13 @@
   <!-- <script src="js/bootstrap.min.js"></script> -->
 
  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
 
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+
   
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
 </head>
 <body>
   <!-- Navigation -->
@@ -28,7 +33,7 @@
 		<div class="container-fluid">
 	    <div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="mr-auto"></span>
+				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -40,9 +45,9 @@
 	    </div>
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<a class="navbar-brand active" href="/">Home</a>
-			<a class="navbar-brand" href="#answer">Answer</a>
-			<a class="navbar-brand" href="#notifications">Notifications</a>
+			<a class="navbar-brand active" href="/"><i class="fa fa-home"></i> Home</a>
+			<a class="navbar-brand" href="#answer"><i class="fa fa-edit"></i> Answers</a>
+			<a class="navbar-brand" href="#notifications"> <i class="fa fa-bell-o"></i> Notifications</a>
 
 	    	<div class="col-md-2"></div>
 	    	<form action="/question" method="post" class="navbar-form navbar-left">
@@ -57,28 +62,27 @@
 		        	<% if logged_in? %>
 						<a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
 					        <img class="img-circle special-img" src="/img/<%= current_user.img%>" alt="">
-							<p> <%= current_user.name %></p>
-							<!-- <b class="caret"> </b> -->
+							<p class="p-navbar"> <%= current_user.name %></p>
 						</a>
 			        	<ul class="dropdown-menu">
 			          		<li>
-			          			<a href="/users/<%=current_user.id%>">Profile</a>
+			          			<a href="/users/<%=current_user.id%>"><i class="fa fa-user"></i>  Profile</a>
 			          		</li>
 							<li role="separator" class="divider"></li>
 			          		<li>
-			          			<a href="/users/<%=current_user.id%>">Settings</a>
+			          			<a href="/users/<%=current_user.id%>"><i class="fa fa-wrench"></i>  Settings
+			          			</a>
 			          		</li>
 							<li role="separator" class="divider"></li>
-							<li><a href="/logout">Logout</a></li>
+							<li>
+								<a href="/logout"><i class="fa fa-sign-out"></i>  Logout</a>
+							</li>
 						</ul>
 		            <% else %>
-<!-- 			          <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown"><p>Guest </p>
-			          	<img class="img-circle special-img" src="/img/user_general.png" alt=""> -->
-			          	<!-- <b class="caret"></b> -->
 			          </a>
 			          	<a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
 					        <img class="img-circle special-img" src="/img/user_general.png" alt="">
-							<p> Login / Signup</p>
+							<p class="p-navbar"> Login / Signup</p>
 							<!-- <b class="caret"> </b> -->
 						</a>
 				        <ul class="dropdown-menu">
@@ -97,7 +101,9 @@
   <div class="container">
   	<%= yield %>
   </div>
-  
+
+<script src="/js/application.js"></script>
+
 </body>
 
 </html>

@@ -13,7 +13,7 @@ get '/users/:id/edit' do
 	erb :'users/edit'
 end
 
-put '/users/:id' do
+post '/users/:id' do
 	@user = current_user
 	@user.update(params[:user])
 	if @user.valid?

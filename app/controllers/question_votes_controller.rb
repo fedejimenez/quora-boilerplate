@@ -22,6 +22,7 @@ post '/question/:id/upvote' do
 		@message = "Please login to vote"
 		erb :'sessions/new'
 	end
+	return @message
 end
 
 post '/question/:id/downvote' do 
@@ -48,4 +49,5 @@ post '/question/:id/downvote' do
 		@message = "Please login to vote"
 		erb :'sessions/new'
 	end
+	return @message
 end
