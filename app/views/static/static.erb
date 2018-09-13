@@ -27,23 +27,23 @@
 				<div class="row">
 <!-- 					<form class="col-md-2" action="/question/<%=q.id%>/upvote" method="post"> -->								
 
-					<button class="btn btn-xs btn-info " id="upvote" onclick="upvote('<%= q.id %>');">
+					<button class="btn btn-xs btn-info " id="upvote-count" onclick="vote('<%= q.id %>','upvote');" >
 						<i class="fa fa-thumbs-up"></i>
-						<span id="upvote-count"> | <%= q.count_upvotes %> </span>
+ 						<span id="upvote-<%= q.id %>"> | <%= q.count_upvotes %> </span> 
 					</button>
 
 <!-- 
 					<form class="col-md-2" action="/question/<%=q.id%>/downvote" method="post"> -->
 
-					<button class="btn btn-xs btn-secondary" id="downvote" onclick="downvote('<%= q.id %>');">
+					<button class="btn btn-xs btn-secondary" id="downvote-count" onclick="vote('<%= q.id %>', 'downvote');">
 						<i class="fa fa-thumbs-down"></i> 
-						<span id="downvote-count"> | <%= q.count_downvotes %> </span>
+ 						<span id="downvote-<%= q.id %>"> | <%= q.count_downvotes %> </span>
 					</button>
 
 					<!-- </form> -->
 					<div class="col-md-8"><p></p></div>
 				</div>
-				<div class="col-md-8"><p id="message-vote"></p></div>
+				<div class="col-md-8"><p id="message-vote-<%= q.id %>"></p></div>
 				<hr>
 			<% end %>
 		<% end %>
