@@ -20,30 +20,28 @@
 			<% if @questions %>
 			<% @questions.each do |q| %>
 				<h4 class="list-group-item-heading"><a href="/question/<%= q.id %>"><%= q.question %></a></h4>
-				<a href="/users/<%=q.user_id%>"><img class="img-circle special-img" src="/img/<%= q.user.img%>" alt="">
+				<a href="/users/<%=q.user_id%>"><img class="img-circle answer-img" src="/img/<%= q.user.img%>" alt="">
 					<h5 class=""> <%= q.user.name %> </h5>
 				</a>
 				<h6 class="list-group-item-text"><%= q.answers.last.answer if q.answers.last %></h6>
 				<div class="row">
-<!-- 					<form class="col-md-2" action="/question/<%=q.id%>/upvote" method="post"> -->								
-
-					<button class="btn btn-xs btn-info " id="upvote-count" onclick="vote('<%= q.id %>','upvote');" >
+					<button class="btn btn-xs btn-info "  id="upvote-count" onclick="vote('<%= q.id %>','upvote');" >
 						<i class="fa fa-thumbs-up"></i>
  						<span id="upvote-<%= q.id %>"> | <%= q.count_upvotes %> </span> 
 					</button>
-
-<!-- 
-					<form class="col-md-2" action="/question/<%=q.id%>/downvote" method="post"> -->
 
 					<button class="btn btn-xs btn-secondary" id="downvote-count" onclick="vote('<%= q.id %>', 'downvote');">
 						<i class="fa fa-thumbs-down"></i> 
  						<span id="downvote-<%= q.id %>"> | <%= q.count_downvotes %> </span>
 					</button>
 
-					<!-- </form> -->
-					<div class="col-md-8"><p></p></div>
+					<!--  TOast Message with vote action -->
+					<div class="col-md-8 message">
+						<div id="message-vote-<%= q.id %>">
+						</div>
+					</div>
+
 				</div>
-				<div class="col-md-8"><p id="message-vote-<%= q.id %>"></p></div>
 				<hr>
 			<% end %>
 		<% end %>

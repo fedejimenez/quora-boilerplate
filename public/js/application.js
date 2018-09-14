@@ -15,12 +15,34 @@ function vote(id, type){
 	   let message = "#message-vote-"+id.toString()
 	   let upvote = "#upvote-"+id.toString();
 	   let downvote = "#downvote-"+id.toString();
-	   $(message).html(array[2]);
+	   // $(message).html(array[2]);
 	   $(upvote).replaceWith("<span id=upvote-"+id+"> | "+ array[0] + "</span>") ;
 	   $(downvote).replaceWith("<span id=downvote-"+id+"> | "+ array[1] + "</span>") ;
+  	   snackbarMessage(message, array[2]);
 	});
 
 	request.fail(function() {
     alert( "error" );
   	});
 };
+
+function snackbarMessage(div, message) {
+	var oldTag = document.getElementById(div.substr(1));
+    if(document.getElementById("snackbar")){
+        document.getElementById("snackbar").remove();
+    }
+
+	var newTag = document.createElement('div'); // create new textarea
+	newTag.setAttribute("id", "snackbar");
+	oldTag.appendChild(newTag); // add it to the div
+    
+    // Get the snackbar DIV
+    var x = document.querySelector("#snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+    $("#snackbar").html(message);
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}

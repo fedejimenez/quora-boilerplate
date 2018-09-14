@@ -12,6 +12,10 @@ body {
   padding-bottom: 1.2em;
 }
 
+a .navbar-brand{
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
 
 /* ================================
 nav
@@ -41,14 +45,14 @@ nav
   border-color: #b92b27 !important;
 }
 
-.profile-pic {
+/*.profile-pic {
   border-radius: 50%;
   width: 50px;
-}
+}*/
 
 .navbar-nav>li>a.profile-image {
-    padding-top: 10px;
-    padding-bottom: 5px;
+    padding-top: 7px;
+    padding-bottom: 0px;
 }
 
 
@@ -57,40 +61,50 @@ nav
 /*==============================================================*/
 
 .special-img {
-    width: 2em;
-    height: 2em;
+    width: 1.7em;
+    height: 1.7em;
+    /*vertical-align: center;*/
+    /*object-fit: contain;*/
+    position: relative;
+    top: -7px;
+    float: left;
+    left: -7px;
+}
+.answer-img {
+    width: 1.7em;
+    height: 1.7em;
+    /*vertical-align: center;*/
     /*object-fit: contain;*/
     position: relative;
     float: left;
-    /*padding-left: 10px;*/
-    /*padding-right: 10px;*/
+    left: -5px;
 }
 
-.caret{
-}
-
-.p-navbar{
-  font-size: 20px;
+/*=====================================================*/
+/*                MAIN LOGO QUORA                      */
+/*=====================================================*/
+#main-logo{
   padding-right: 10px;
-  text-align: right;
 }
+
 /*==============================================================*/
 /*                   SEARCH QUESTION BAR                        */
 /*==============================================================*/
 
 /*input[type=text] {*/
 #searchbox {
-    /*width: 40%;*/
+    /*width: 80%;*/
+    /*width: 250px !important;*/
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     background-color: white;
     background-image: url('../img/searchicon.png');
-    background-size: 7%;
+    background-size: 20px;
     background-position: 0.4em 0.4em ; 
     background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
+    padding: 12px 20px 12px 35px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
@@ -100,15 +114,65 @@ nav
     width: 80%;
 }*/
 
-/*==============================================================*/
-/*                   ANSWERS                                    */
-/*==============================================================*/
-
-a .user-answer{
-}
-#answer{
+#btn-question{
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
-#message-vote{
-  background-origin: red;
+/*==============================================================*/
+/*                   SNACKBAR (TOAST MESSAGE)                                    */
+/*==============================================================*/
+.message{
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    /*min-width: 250px;*/ /* Set a default minimum width */
+    /*margin-left: -125px;*/ /* Divide value of min-width by 2 */
+    max-height: 8px;
+    background-size: 0px;
+    font-weight: bold;
+    font-size: 8px;
+    /*background-color: #333;  Black background color */
+    background-color: white; /* Red background color */
+    color: red; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 5px; /* Rounded borders */
+    padding: 10px; /* Padding */
+   /* position: fixed;*/ /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 0px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar 
+    z-index: 1000;
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+   However, delay the fade out process for 2.5 seconds */
+   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+   animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 0px; opacity: 0.6;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 0px; opacity: 0.6;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 0px; opacity: 0.6;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 0px; opacity: 0.6;}
+    to {bottom: 0; opacity: 0;}
 }

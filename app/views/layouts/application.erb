@@ -23,14 +23,13 @@
 
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-
   
 </head>
 <body>
   <!-- Navigation -->
   <!-- <nav class="navbar navbar-default"> -->
   <nav class="navbar navbar-inverse">
-		<div class="container-fluid">
+  	<div class="container-fluid">
 	    <div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 				<span class="sr-only">Toggle navigation</span>
@@ -39,63 +38,62 @@
 				<span class="icon-bar"></span>
 			</button>
 
-			<a class="" href="/">
+			<a class="" id="main-logo" href="/">
 				<img src="/img/quora_logo.svg" alt="logo" class="navbar-brand">
 			</a>
 	    </div>
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<a class="navbar-brand active" href="/"><i class="fa fa-home"></i> Home</a>
-			<a class="navbar-brand" href="#answer"><i class="fa fa-edit"></i> Answers</a>
-			<a class="navbar-brand" href="#notifications"> <i class="fa fa-bell-o"></i> Notifications</a>
-
-	    	<div class="col-md-2"></div>
-	    	<form action="/question" method="post" class="navbar-form navbar-left">
-				<input type="text" name="question[question]" placeholder="Search Quora" id="searchbox" class="form-control col-md-8">
-				<input type="submit" value="Add Question" class="btn btn-danger"">
-			</form>
-			<div class="col-md-2 nav navbar-nav navbar-right">
-
-				<ul class="nav navbar-nav navbar-right">
-
-		        	<li class="dropdown">
-		        	<% if logged_in? %>
-						<a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
-					        <img class="img-circle special-img" src="/img/<%= current_user.img%>" alt="">
-							<p class="p-navbar"> <%= current_user.name %></p>
-						</a>
-			        	<ul class="dropdown-menu">
-			          		<li>
-			          			<a href="/users/<%=current_user.id%>"><i class="fa fa-user"></i>  Profile</a>
-			          		</li>
-							<li role="separator" class="divider"></li>
-			          		<li>
-			          			<a href="/users/<%=current_user.id%>"><i class="fa fa-wrench"></i>  Settings
-			          			</a>
-			          		</li>
-							<li role="separator" class="divider"></li>
-							<li>
-								<a href="/logout"><i class="fa fa-sign-out"></i>  Logout</a>
-							</li>
-						</ul>
-		            <% else %>
-			          </a>
-			          	<a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
-					        <img class="img-circle special-img" src="/img/user_general.png" alt="">
-							<p class="p-navbar"> Login / Signup</p>
-							<!-- <b class="caret"> </b> -->
-						</a>
-				        <ul class="dropdown-menu">
-				          <li><a href="/login">Login</a></li>
-						  <li role="separator" class="divider"></li>
-				          <li><a href="/signup">Sign Up</a></li>
-						</ul>
-				    <% end %>
-		        	</li>
-		      	</ul>
-	      	</div>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
+			<div class="navbar-header hidden-sm hidden-xs">
+				<a class="navbar-brand active" href="/"><i class="fa fa-home"></i> Home</a>
+				<a class="navbar-brand" href="#answer"><i class="fa fa-edit"></i> Answers</a>
+				<a class="navbar-brand" href="#notifications"> <i class="fa fa-bell-o"></i> Notifications</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<form action="/question" method="post" class="navbar-form" >
+						<input type="text" name="question[question]" placeholder="Search Quora" id="searchbox" class="form-control">
+						<input type="submit" value="Add Question" class="btn btn-danger" id="btn-question">
+					</form>
+				</li>
+	        	<li class="dropdown">
+	        	<% if logged_in? %>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">
+				        <img class="img-circle img-circle special-img" src="/img/<%= current_user.img%>" alt="Picture">
+						<%= current_user.name %>
+						<span class="caret"></span>
+					</a>
+		        	<ul class="dropdown-menu">
+		          		<li>
+		          			<a href="/users/<%=current_user.id%>"><i class="fa fa-user"></i>  Profile</a>
+		          		</li>
+						<li role="separator" class="divider"></li>
+		          		<li>
+		          			<a href="/users/<%=current_user.id%>"><i class="fa fa-wrench"></i>  Settings
+		          			</a>
+		          		</li>
+						<li role="separator" class="divider"></li>
+						<li>
+							<a href="/logout"><i class="fa fa-sign-out"></i>  Logout</a>
+						</li>
+					</ul>
+	            <% else %>
+		          </a>
+		          	<a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
+				        <img class="img-circle special-img" src="/img/user_general.png" alt="">
+						<p class="p-navbar"> Login / Signup</p>
+						<!-- <b class="caret"> </b> -->
+					</a>
+			        <ul class="dropdown-menu">
+			          <li><a href="/login">Login</a></li>
+					  <li role="separator" class="divider"></li>
+			          <li><a href="/signup">Sign Up</a></li>
+					</ul>
+			    <% end %>
+	        	</li>
+		    </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
 	</nav>
 
   <div class="container">
